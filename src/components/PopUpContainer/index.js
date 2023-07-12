@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSpeechSynthesis } from 'react-speech-kit';
+// import { useSpeechSynthesis } from 'react-speech-kit';
 import HashLoader from 'react-spinners/HashLoader';
 import './index.css';
 import { AiOutlineClose, AiOutlinePlayCircle, AiOutlinePauseCircle } from 'react-icons/ai';
@@ -11,24 +11,24 @@ const PopUpContainer = (props) => {
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(false);
 
-  const { speak, cancel } = useSpeechSynthesis();
+  // const { speak, cancel } = useSpeechSynthesis();
 
   const closePopUp = () => {
-    cancel(); 
+    // cancel(); 
     toggleModal();
   };
 
   const playAudio = () => {
     setPlaying(true);
-    speak({ text: joke });
-    setTimeout(()=>{
-      setPlaying(false)
-    },8000)
+    // speak({ text: joke });
+    // setTimeout(()=>{
+    //   setPlaying(false)
+    // },8000)
   };
 
   const pauseAudio = () => {
     setPlaying(false);
-    cancel();
+    // cancel();
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const PopUpContainer = (props) => {
   };
 
   const nextButton = () => {
-    cancel()
+    // cancel()
     setPlaying(false);
     setLoading(true);
     getApiData();

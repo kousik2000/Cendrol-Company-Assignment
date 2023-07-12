@@ -1,0 +1,49 @@
+.preLoader-container {
+    width: 100%;
+    height: 100vh;
+    background-color:#338FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: background-opacity 5s infinite;
+  }
+  
+  .preloader-heading {
+    color: #000000;
+    font-size: 5rem;
+    font-family: sans-serif;
+    text-align: center;
+    animation: Zoom 5s infinite;
+  }
+  
+  @keyframes Zoom {
+    0% {
+      transform: translateZ(0);
+    }
+    40% {
+      transform: translateZ(0);
+    }
+    60% {
+      transform: translateZ(0) scale(15);
+    }
+    100% {
+      transform: translateZ(0) scale(15);
+      opacity: 0.1;
+    }
+  }
+  
+  @keyframes background-opacity {
+    0% {
+        opacity: 1;
+      }
+      40% {
+        opacity: 1;
+      }
+      60% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0.5;
+      }
+  }
+  

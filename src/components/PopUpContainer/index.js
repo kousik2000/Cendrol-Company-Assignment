@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { useSpeechSynthesis } from 'react-speech-kit';
 import HashLoader from 'react-spinners/HashLoader';
 import './index.css';
 import { AiOutlineClose, AiOutlinePlayCircle, AiOutlinePauseCircle } from 'react-icons/ai';
@@ -10,25 +9,29 @@ const PopUpContainer = (props) => {
   const [joke, setJoke] = useState('');
   const [loading, setLoading] = useState(true);
   const [playing, setPlaying] = useState(false);
-
-  // const { speak, cancel } = useSpeechSynthesis();
+  let speechSynthesisUtterance = null;
 
   const closePopUp = () => {
-    // cancel(); 
+    if (speechSynthesisUtterance) {
+      speechSynthesisUtterance.onend = null;
+      speechSynthesisUtterance = null;
+    }
     toggleModal();
   };
 
   const playAudio = () => {
     setPlaying(true);
-    // speak({ text: joke });
-    // setTimeout(()=>{
-    //   setPlaying(false)
-    // },8000)
+    speechSynthesisUtterance = new SpeechSynthesisUtterance(joke);
+    speechSynthesisUtterance.onend = () => {
+      setPlaying(false);
+      speechSynthesisUtterance = null;
+    };
+    speechSynthesis.speak(speechSynthesisUtterance);
   };
 
   const pauseAudio = () => {
     setPlaying(false);
-    // cancel();
+    speechSynthesis.cancel();
   };
 
   useEffect(() => {
@@ -62,7 +65,10 @@ const PopUpContainer = (props) => {
   };
 
   const nextButton = () => {
-    // cancel()
+    if (speechSynthesisUtterance) {
+      speechSynthesisUtterance.onend = null;
+      speechSynthesisUtterance = null;
+    }
     setPlaying(false);
     setLoading(true);
     getApiData();

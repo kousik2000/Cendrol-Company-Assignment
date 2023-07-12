@@ -38,32 +38,32 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      {isPreLoading ? (
-        <PreLoader />
-      ) : (
-        <>
-          <div className="bg-container">
-            <h1 className="main-head">Chuck Norris</h1>
-            <div className="card-container">
-              <ul className="list-container">
-                {categories.map((eachItem) => (
-                  <CardItem key={eachItem} eachItem={eachItem} cardClicked={cardClicked} />
-                ))}
-              </ul>
-            </div>
+  <>
+    {isPreLoading ? (
+      <PreLoader />
+    ) : (
+      <>
+        <div className="bg-container">
+          <h1 className="main-head">Chuck Norris</h1>
+          <div className="card-container">
+            <ul className="list-container">
+              {categories.map((eachItem) => (
+                <CardItem key={eachItem} eachItem={eachItem} cardClicked={cardClicked} />
+              ))}
+            </ul>
           </div>
-          {isCardClicked && (
-            <div className="popup">
-              <div onClick={toggleModal} className="overlay"></div>
-              <PopUpContainer toggleModal={toggleModal} categoryId={cardId} />
-            </div>
-          )}
-        </>
-      )}
-    </>
-  );
-  
+        </div>
+        {isCardClicked && (
+          <div className="popup">
+            <div onClick={toggleModal} className="overlay"></div>
+            <PopUpContainer toggleModal={toggleModal} categoryId={cardId} />
+          </div>
+        )}
+      </>
+    )}
+  </>
+);
+
 };
 
 export default App;
